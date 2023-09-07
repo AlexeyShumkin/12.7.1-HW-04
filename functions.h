@@ -40,7 +40,7 @@ void IsKPeriodic(const std::string& str, int k)
 		bool check = false;
 		for (int i = 0; i < n; ++i)
 		{
-			if (lps[i] != 0 && (lps[i] % k) == 0)
+			if (lps[i] && !(lps[i] % k) && !(n % lps[i]))
 			{
 				std::cout << "The string is a multiple of the number " << lps[i] << '\n';
 				check = true;
