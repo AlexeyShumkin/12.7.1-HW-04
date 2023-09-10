@@ -18,24 +18,20 @@ bool IsKPeriodic(const std::string& str, int k)
 		int shift = 1;
 		for (int i = 0; i < n; ++i)
 		{
-			for (int j = 0; j < n; ++j)
+			if (tmp[i] != str[i])
 			{
-				if (tmp[j] != str[j])
+				++shift;
+				tmp.emplace(tmp.begin(), tmp[n - 1]);
+				tmp.pop_back();
+			}
+			else
+			{
+				if ((i == n - 1) && (k % shift == 0))
 				{
-					++shift;
-					break;
-				}
-				else
-				{
-					if ((j == n - 1) && (k % shift == 0))
-					{
-						std::cout << "The string is a multiple of " << k << '\n';
-						return true;
-					}
+					std::cout << "The string is a multiple of " << k << '\n';
+					return true;
 				}
 			}
-			tmp.emplace(tmp.begin(), tmp[n - 1]);
-			tmp.pop_back();
 		}
 		std::cout << "The string is NOT a multiple of " << k << '\n';
 		return false;
