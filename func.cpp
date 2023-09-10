@@ -3,7 +3,7 @@
 bool IsKPeriodic(const std::string& str, int k)
 {
 	int n = (int)str.size();
-	if (k > n / 2)
+	if ((k > n / 2) || (n % k != 0))
 	{
 		std::cout << "The string is NOT a multiple of " << k << '\n';
 		return false;
